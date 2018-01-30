@@ -26,8 +26,8 @@ namespace RiotSharp.Test.EndpointTests
         [TestMethod]
         public void GetThirdPartyCode_Test()
         {
-            _requester.Setup(moq => moq.CreateGetRequest(It.IsAny<string>(), It.IsAny<Region>(),
-                It.IsAny<List<string>>(), It.IsAny<bool>())).Returns(response);
+            _requester.Setup(moq => moq.CreateGetRequestAsync(It.IsAny<string>(), It.IsAny<Region>(),
+                It.IsAny<List<string>>(), It.IsAny<bool>()).Result).Returns(response);
             var code = _riotApi.ThirdParty.GetThirdPartyCodeBySummonerId(Region.na,1);
             Assert.AreEqual("someReponse", code);
         }

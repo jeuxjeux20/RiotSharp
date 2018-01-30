@@ -2,6 +2,7 @@
 using RiotSharp.Endpoints.Interfaces;
 using RiotSharp.Http.Interfaces;
 using RiotSharp.Misc;
+using System;
 
 namespace RiotSharp.Endpoints.ThirdPartEndpoint
 {
@@ -20,7 +21,7 @@ namespace RiotSharp.Endpoints.ThirdPartEndpoint
         public string GetThirdPartyCodeBySummonerId(Region region, long summonerId)
         {
             var response =  _requester
-                .CreateGetRequest(ThirdPartyRootUrl + string.Format(ThirdPartyBySummonerUrl, summonerId), region);
+                .CreateGetRequestAsync(ThirdPartyRootUrl + string.Format(ThirdPartyBySummonerUrl, summonerId), region).Result;
             return response.Substring(1, response.Length - 2);
         }
 
